@@ -97,7 +97,8 @@ resource "aws_api_gateway_resource" "word_count_resource" {
   path_part   = "wordcount"
 }
 
-# Create a POST method
+# Integrate API Gateway with Lambda
+
 resource "aws_api_gateway_method" "word_count_method" {
   rest_api_id     = aws_api_gateway_rest_api.word_count_api.id
   resource_id     = aws_api_gateway_resource.word_count_resource.id
@@ -105,7 +106,6 @@ resource "aws_api_gateway_method" "word_count_method" {
   authorization   = "NONE"
 }
 
-# Integrate API Gateway with Lambda
 resource "aws_api_gateway_integration" "word_count_integration" {
   rest_api_id              = aws_api_gateway_rest_api.word_count_api.id
   resource_id              = aws_api_gateway_resource.word_count_resource.id
@@ -133,19 +133,14 @@ resource "aws_iam_role" "role" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
-#resource "aws_api_gateway_stage" "word_count_stage" {
-#  deployment_id = aws_api_gateway_deployment.word_count_deployment.id
-#  rest_api_id   = aws_api_gateway_rest_api.word_count_api.id
-#  stage_name    = "test"
-#}
 
 # Grant API Gateway permission to invoke Lambda
+
 resource "aws_lambda_permission" "api_gateway_permission" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.word_count_function.function_name
   principal     = "apigateway.amazonaws.com"
 
-  #source_arn = "${aws_api_gateway_rest_api.word_count_api.execution_arn}/*/*" 
   source_arn = "${aws_api_gateway_rest_api.word_count_api.execution_arn}/*/*"
 }
