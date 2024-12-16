@@ -47,7 +47,7 @@ The complete set of steps to be followed are as below:
 2.Run terraform init to initialize the Terraform work directory.
 
         terraform init
-![screenshot](screenshots/terraform_init.png)
+![screenshot](screenshots/terraform_init.PNG)
 
 
 3.Run terraform plan
