@@ -1,6 +1,4 @@
-# irius-risk-technical-challenge 
-
-Thank you IriusRisk for providing the Technical Challenge question sheet. Here, I intend to answer the points raised precisely and concisely with the deployment steps. 
+#  My AWS Lambda Challenge
 
 ## Assumptions
 1. Terraform installed
