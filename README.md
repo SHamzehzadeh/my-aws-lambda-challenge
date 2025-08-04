@@ -1,4 +1,5 @@
 #  My AWS Lambda Challenge
+Purpose : to develop a serverless application and its supporting infrastructure using Terraform on AWS. The app should accept POST requests containing a text parameter, analyze the text to identify the ten most frequent words, store this data in a JSON file, and respond with a URL where the user can download the generated file.
 
 ## Assumptions
 1. Terraform installed
